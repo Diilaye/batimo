@@ -65,7 +65,7 @@ const QuoteDetails: React.FC = () => {
   const { data: quote, isLoading: quoteLoading } = useQuery({
     queryKey: ['quote', id],
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:3000/api/quotes/${id}`, {
+      const response = await axios.get(`http://localhost:3011/api/quotes/${id}`, {
         withCredentials: true
       });
       return response.data as Quote;
@@ -75,7 +75,7 @@ const QuoteDetails: React.FC = () => {
   const { data: admins, isLoading: adminsLoading } = useQuery({
     queryKey: ['admins'],
     queryFn: async () => {
-      const response = await axios.get('http://localhost:3000/api/admins', {
+      const response = await axios.get('http://localhost:3011/api/admins', {
         withCredentials: true
       });
       return response.data as Admin[];
@@ -86,7 +86,7 @@ const QuoteDetails: React.FC = () => {
     const toastId = toast.loading('Mise à jour du statut...');
     try {
       await axios.patch(
-        `http://localhost:3000/api/quotes/${id}/status`,
+        `http://localhost:3011/api/quotes/${id}/status`,
         { status },
         { withCredentials: true }
       );
@@ -105,7 +105,7 @@ const QuoteDetails: React.FC = () => {
 
     const toastId = toast.loading('Suppression du devis...');
     try {
-      await axios.delete(`http://localhost:3000/api/quotes/${id}`, {
+      await axios.delete(`http://localhost:3011/api/quotes/${id}`, {
         withCredentials: true
       });
       
@@ -123,7 +123,7 @@ const QuoteDetails: React.FC = () => {
     const toastId = toast.loading('Ajout du commentaire...');
     try {
       await axios.post(
-        `http://localhost:3000/api/quotes/${id}/comments`,
+        `http://localhost:3011/api/quotes/${id}/comments`,
         {
           content: newComment,
           mentions: selectedMentions
@@ -146,7 +146,7 @@ const QuoteDetails: React.FC = () => {
     const toastId = toast.loading('Suppression du commentaire...');
     try {
       await axios.delete(
-        `http://localhost:3000/api/quotes/${id}/comments/${commentId}`,
+        `http://localhost:3011/api/quotes/${id}/comments/${commentId}`,
         { withCredentials: true }
       );
 

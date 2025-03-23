@@ -24,7 +24,7 @@ const MessageDetails: React.FC = () => {
   const { data: message, isLoading, error } = useQuery({
     queryKey: ['message', id],
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:3000/api/messages/${id}`, {
+      const response = await axios.get(`http://localhost:3011/api/messages/${id}`, {
         withCredentials: true
       });
       return response.data as Message;
@@ -37,7 +37,7 @@ const MessageDetails: React.FC = () => {
     const toastId = toast.loading('Marquage du message comme lu...');
     try {
       await axios.patch(
-        `http://localhost:3000/api/messages/${id}/read`,
+        `http://localhost:3011/api/messages/${id}/read`,
         {},
         { withCredentials: true }
       );
@@ -56,7 +56,7 @@ const MessageDetails: React.FC = () => {
 
     const toastId = toast.loading('Suppression du message...');
     try {
-      await axios.delete(`http://localhost:3000/api/messages/${id}`, {
+      await axios.delete(`http://localhost:3011/api/messages/${id}`, {
         withCredentials: true
       });
       

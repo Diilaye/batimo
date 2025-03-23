@@ -20,7 +20,7 @@ const ServicesList: React.FC = () => {
   const { data: services, isLoading, error } = useQuery({
     queryKey: ['services'],
     queryFn: async () => {
-      const response = await axios.get('http://localhost:3000/api/services', {
+      const response = await axios.get('http://localhost:3011/api/services', {
         withCredentials: true
       });
       return response.data as Service[];
@@ -39,7 +39,7 @@ const ServicesList: React.FC = () => {
     if (!confirm('Êtes-vous sûr de vouloir supprimer ce service ?')) return;
     
     try {
-      await axios.delete(`http://localhost:3000/api/services/${id}`, {
+      await axios.delete(`http://localhost:3011/api/services/${id}`, {
         withCredentials: true
       });
       // Refresh services list

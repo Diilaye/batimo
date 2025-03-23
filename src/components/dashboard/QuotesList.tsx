@@ -46,7 +46,7 @@ const QuotesList: React.FC = () => {
   const { data: quotes, isLoading, error } = useQuery({
     queryKey: ['quotes'],
     queryFn: async () => {
-      const response = await axios.get('http://localhost:3000/api/quotes', {
+      const response = await axios.get('http://localhost:3011/api/quotes', {
         withCredentials: true
       });
       return response.data as Quote[];
@@ -58,7 +58,7 @@ const QuotesList: React.FC = () => {
     
     try {
       await axios.patch(
-        `http://localhost:3000/api/quotes/${id}/status`,
+        `http://localhost:3011/api/quotes/${id}/status`,
         { status },
         { withCredentials: true }
       );

@@ -49,7 +49,10 @@ mongoose.connection.on('disconnected', () => {
   console.log('MongoDB disconnected');
 });
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3010',
+  credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -313,7 +316,7 @@ app.delete('/api/services/:id', authenticateToken, async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3011;
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur le port ${PORT}`);
 });

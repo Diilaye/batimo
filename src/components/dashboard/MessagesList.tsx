@@ -22,7 +22,7 @@ const MessagesList: React.FC = () => {
   const { data: messages, isLoading, error } = useQuery({
     queryKey: ['messages'],
     queryFn: async () => {
-      const response = await axios.get('http://localhost:3000/api/messages', {
+      const response = await axios.get('http://localhost:3011/api/messages', {
         withCredentials: true
       });
       return response.data as Message[];
@@ -33,7 +33,7 @@ const MessagesList: React.FC = () => {
     const toastId = toast.loading('Marquage du message comme lu...');
     try {
       await axios.patch(
-        `http://localhost:3000/api/messages/${id}/read`,
+        `http://localhost:3011/api/messages/${id}/read`,
         {},
         { withCredentials: true }
       );
