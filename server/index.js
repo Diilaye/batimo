@@ -28,7 +28,7 @@ const mongoOptions = {
   w: 'majority'
 };
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = "mongodb+srv://issak:EXy96RAMNVb2pYIh@verum.ts0hqkb.mongodb.net/batimo";
 if (!MONGODB_URI) {
   console.error('MONGODB_URI is not defined in environment variables');
   process.exit(1);
@@ -61,7 +61,7 @@ const authenticateToken = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) return res.status(401).json({ message: 'Non autorisé' });
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+  jwt.verify(token, "votre_secret_jwt_super_securise", (err, user) => {
     if (err) return res.status(403).json({ message: 'Token invalide' });
     req.user = user;
     next();
@@ -137,7 +137,7 @@ app.post('/api/admin/login', async (req, res) => {
       return res.status(401).json({ message: 'Email ou mot de passe incorrect' });
     }
 
-    const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
+    const token = jwt.sign({ id: admin._id }, "votre_secret_jwt_super_securise", { expiresIn: '24h' });
     
     res.cookie('token', token, {
       httpOnly: true,
