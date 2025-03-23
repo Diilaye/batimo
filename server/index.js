@@ -50,9 +50,10 @@ mongoose.connection.on('disconnected', () => {
 });
 
 app.use(cors({
-  origin: 'http://localhost:3010',
+  origin: ['http://localhost:3010', 'https://batimo.nataal.shop'],
   credentials: true
 }));
+
 app.use(express.json());
 app.use(cookieParser());
 
